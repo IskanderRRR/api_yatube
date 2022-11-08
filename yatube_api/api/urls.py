@@ -12,12 +12,12 @@ router.register(
     basename='comments'
 )
 router.register(
-    r'groups',
+    'groups',
     GroupViewSet,
     basename='groups'
 )
 router.register(
-    r'posts',
+    'posts',
     PostViewSet,
     basename='posts'
 )

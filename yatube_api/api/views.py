@@ -1,18 +1,10 @@
-from posts.models import Group, Post
-from rest_framework import permissions, viewsets
+from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
 from .serializers import CommentSerializer, GroupSerializer, PostSerializer
-
-
-class OnlyAuthorPermission(permissions.BasePermission):
-
-    def has_object_permission(self, request, view, obj):
-        return (
-            request.method in permissions.SAFE_METHODS
-            or obj.author == request.user
-        )
+from posts.models import Group, Post
+from .permissions import OnlyAuthorPermission
 
 
 class CommentViewSet(viewsets.ModelViewSet):
